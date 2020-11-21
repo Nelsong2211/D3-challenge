@@ -65,7 +65,7 @@ d3.csv("/assets/data/data.csv").then(function(smokeData) {
       .attr("r", "12")
       .attr("fill", "lightblue")
       .attr("opacity", ".5")
-      .attr("stroke", "white");
+      
 
     //Create text labels with state abbreviation for each circle
     chartGroup.append("text")
@@ -90,10 +90,9 @@ d3.csv("/assets/data/data.csv").then(function(smokeData) {
     // ==============================
     var toolTip = d3.tip()
         .attr("class", "tooltip")
-        .offset([80, -70])
+        .offset([80, -60])
+        .style("background", "lightblue")
         .style("position", "absolute")
-        .style("background", "lightsteelblue")
-        .style("pointer-events", "none")
       .html(function(d) {
         return (`${d.state}<br>Population inPoverty (%): ${d.poverty}<br>healthcare (%): ${d.healthcare}`)
       });
@@ -116,15 +115,15 @@ d3.csv("/assets/data/data.csv").then(function(smokeData) {
     // Create axes labels
     chartGroup.append("text")
       .attr("transform", "rotate(-90)")
-      .attr("y", 0 - margin.left -5)
-      .attr("x", 0 - (height / 1.30))
+      .attr("y", 0 - margin.left + 40)
+      .attr("x", 0 - (height / 2))
       .attr("dy", "1em")
       .attr("class", "axisText")
-      .text("Healthcare service");
+      .text("Lacks Healthcare (%)");
 
     chartGroup.append("text")
       .attr("transform", `translate(${width / 2.5}, ${height + margin.top + 30})`)
       .attr("class", "axisText")
-      .text("Poverty (%)");
+      .text("In Poverty (%)");
 
 });
